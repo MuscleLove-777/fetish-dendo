@@ -563,6 +563,8 @@ def _build_related_section() -> str:
 {random.choice(suggestions)}
 
 [カテゴリー一覧を見る](/fetish-dendo/categories/) | [タグ一覧を見る](/fetish-dendo/tags/)
+
+[もっと多くのジャンルを見る → エロナビ](https://musclelove-777.github.io/eronavi/)
 """
 
 

@@ -12,9 +12,10 @@ buildExpired = false
 
 [sitemap]
   changefreq = "daily"
-  priority = 0.5
+  priority = 0.7
 
 [params]
+  canonicalURL = true
   env = "production"
   description = "乳首・脚・尻・脇…あらゆるフェチを満たすAV作品を毎日厳選レビュー"
   author = "フェチの殿堂編集部"
