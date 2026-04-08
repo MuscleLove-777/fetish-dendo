@@ -364,7 +364,7 @@ def _generate_single_article(
     cta_section = _build_cta(affiliate_url, title)
 
     # サンプル画像ギャラリー
-    sample_gallery = _build_sample_gallery(sample_images)
+    sample_gallery = _build_sample_gallery(sample_images, affiliate_url)
 
     # サンプル動画セクション
     sample_movie = _build_sample_movie(sample_movie_url)
@@ -490,12 +490,16 @@ def _build_cta(affiliate_url: str, title: str) -> str:
 """
 
 
-def _build_sample_gallery(sample_images: list[str]) -> str:
-    """サンプル画像ギャラリーを生成する（最大6枚、インラインスタイル）"""
+def _build_sample_gallery(sample_images: list[str], affiliate_url: str = "") -> str:
+    """サンプル画像ギャラリーを生成する（最大6枚、インラインスタイル）
+
+    画像のリンク先はCDN直リンクではなくFANZAアフィリURLに統一する。
+    """
     if not sample_images:
         return ""
 
     images = sample_images[:6]
+    link_href = affiliate_url or "#"
 
     gallery_html = """
 ### サンプル画像
@@ -503,7 +507,7 @@ def _build_sample_gallery(sample_images: list[str]) -> str:
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 1em 0;">
 """
     for idx, img_url in enumerate(images, 1):
-        gallery_html += f'  <a href="{img_url}" target="_blank" rel="nofollow"><img src="{img_url}" alt="フェチ作品のサンプル画像{idx}" style="width: 100%; border-radius: 4px;" loading="lazy" /></a>\n'
+        gallery_html += f'  <a href="{link_href}" target="_blank" rel="nofollow sponsored"><img src="{img_url}" alt="フェチ作品のサンプル画像{idx}" style="width: 100%; border-radius: 4px;" loading="lazy" /></a>\n'
 
     gallery_html += "</div>\n"
     return gallery_html
